@@ -16,6 +16,8 @@
     <description>multi-module</description>
     <modules>
         <module>user-service</module>
+        <module>catalog-service</module>
+        <module>order-service</module>
         <module>apigateway-service</module>
         <module>service-discovery</module>
     </modules>

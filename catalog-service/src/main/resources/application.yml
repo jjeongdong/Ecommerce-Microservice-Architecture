@@ -3,11 +3,11 @@ server:
 
 spring:
   application:
-    name: user-service
+    name: catalog-service
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/userdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/catalogdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
     username: root
     password:
 
@@ -19,11 +19,6 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
 
-  security:
-    user:
-      name: user
-      password: $2a$10$LM8bGp4NUy0.fx6e7EVca..bIJ9pF6nwsIifnSyYfvk4KUlFmnb2K
-
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
@@ -32,10 +27,3 @@ eureka:
       defaultZone: http://127.0.0.1:8761/eureka
     fetch-registry: true
     register-with-eureka: true
-
-greeting:
-  message: Welcome to the Simple E-commerce - 2nd.
-
-token:
-  secret: my-very-long-secret-key-1234567890123456
-  expiration-time: 86400000 # 10 days
