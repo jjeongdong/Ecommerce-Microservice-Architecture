@@ -1,16 +1,9 @@
 server:
-  port: 0
+  port: 60000
 
 spring:
   application:
     name: user-service
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
-  profiles:
-    active: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/userdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
@@ -40,19 +33,4 @@ eureka:
     register-with-eureka: true
 
 greeting:
-  message: Welcome to the Simple E-commerce - 2nd.
-
-#token:
-#  secret: my-very-long-secret-key-1234567890123456
-#  expiration-time: 86400000 # 10 days
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-          - refresh
-          - health
-          - beans
-          - info
-          - busrefresh
+  message: Welcome to the Simple E-commerce - 3nd.

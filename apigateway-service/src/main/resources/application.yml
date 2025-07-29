@@ -11,6 +11,11 @@ eureka:
 spring:
   application:
     name: apigateway-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     gateway:
       server:
@@ -35,6 +40,14 @@ spring:
               predicates:
                 - Path=/user-service/login
                 - Method=POST
+              filters:
+                - RemoveRequestHeader=Cookie
+                - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - id: user-service
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/user-service/health-check
+                - Method=GET
               filters:
                 - RemoveRequestHeader=Cookie
                 - RewritePath=/user-service/(?<segment>.*), /$\{segment}
@@ -87,3 +100,4 @@ management:
           - beans
           - info
           - httpexchanges # 누가 어떠한 정보를 요청했는지 확인
+          - busrefresh
