@@ -9,19 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>multi-module</artifactId>
+    <artifactId>config-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>multi-module</name>
-    <packaging>pom</packaging>  <!-- 루트 프로젝트 && .jar 파일 생성 X-->
-    <description>multi-module</description>
-    <modules>
-        <module>user-service</module>
-        <module>catalog-service</module>
-        <module>order-service</module>
-        <module>config-service</module>
-        <module>apigateway-service</module>
-        <module>service-discovery</module>
-    </modules>
+    <name>config-service</name>
+    <description>config-service</description>
     <url/>
     <licenses>
         <license/>
@@ -37,13 +28,12 @@
     </scm>
     <properties>
         <java.version>17</java.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <spring-cloud.version>2025.0.0</spring-cloud.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
         <dependency>
@@ -52,6 +42,31 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-bootstrap</artifactId>
+    </dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

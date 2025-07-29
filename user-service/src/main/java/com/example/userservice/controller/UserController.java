@@ -43,8 +43,11 @@ public class UserController {
     @GetMapping("/health-check")
     public String status() {
         return String.format("It's Working in User Service"
-                + ", port(local.server.port)=" + env.getProperty("local.server.port") // application.yml에 설정한 포트
-                + ", port(server.port)=" + env.getProperty("server.port")); // 스프링 부트가 실제 실행중인 포트
+                + ", port(local.server.port)=" + env.getProperty("local.server.port")
+                + ", port(server.port)=" + env.getProperty("server.port")
+                + ", gateway ip(env)=" + env.getProperty("gateway.ip")
+                + ", token secret key=" + env.getProperty("token.secret")
+                + ", token expiration time=" + env.getProperty("token.expiration-time"));
     }
 
     @GetMapping("/welcome")
